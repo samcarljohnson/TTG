@@ -31,7 +31,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Inside the GET method.");
 		LoginService login = new LoginService();
-		login.registerUser("Sam", "sam@burst.us", "pwd");
+		String u = request.getParameter("username");
+		String e = request.getParameter("email");;
+		String p = request.getParameter("password");;
+		login.registerUser(u, e, p);
+		//login.registerUser("Sam", "sam@burst.us", "pwd");
     System.out.println("Added a user, I think...");
 	}
 
@@ -39,7 +43,14 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	  System.out.println("Inside the POST method.");
+    LoginService login = new LoginService();
+    String u = request.getParameter("username");
+    String e = request.getParameter("email");;
+    String p = request.getParameter("password");;
+    login.registerUser(u, e, p);
+    //login.registerUser("Sam", "sam@burst.us", "pwd");
+    System.out.println("Added a user, I think...");
 	}
 
 }

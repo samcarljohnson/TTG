@@ -6,8 +6,9 @@ $(document).ready(function(){
   $("form").submit(function(event){
     console.log("Prevented default submit.");
     
-    var frm = $("form");
-    var data = JSON.stringify(frm.serializeArray());
+    //var frm = $("form");
+    //var data = JSON.stringify(frm.serializeArray());
+    var data = $("form").serialize();
     console.log(data);
     
     var postData = $.ajax({
