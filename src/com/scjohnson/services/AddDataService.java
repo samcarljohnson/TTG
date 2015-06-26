@@ -2,17 +2,18 @@ package com.scjohnson.services;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class LoginService {
-
+public class AddDataService {
+  
   /**
-   * uniqueUser(email) - Queries the database and checks to see if the user login is unique. 
+   * uniqueStr(str) - Queries the database and checks to see if the user login is unique. 
    *   This is done via email.
    * @param email The user email to check for uniqueness.
    */
-  public boolean uniqueUser(String str) {
+  public boolean uniqueStr(String str) {
     Connection con = DBConnect();
     try {
       //String query = "SELECT COUNT(*) FROM user_logins WHERE email='"+str+"';";
@@ -37,46 +38,51 @@ public class LoginService {
   }
   
   /**
-   * registerUser(username, email, password) - Adds the user's information to the user-logins table in the db.
-   * @param username User's username.
-   * @param email User's email address.
-   * @param password User's password.
+   * addData(a, b, c, d, e, f, g, h, i) - Adds the user's data to the user_data table in the db.
+   * @param a bubble_name
+   * @param b creator
+   * @param c bubble_num_moments
+   * @param d widget_nbu_views
+   * @param e total_video_views
+   * @param f visits
+   * @param g views_per_visits
+   * @param h average_watch_time
+   * @param i percentage_mobile
    */
-  public void registerUser(String username, String email, String password) {
-    Connection con = DBConnect();
-    try {
-      String query = "INSERT into user_logins (name, email, password) "
-          + "VALUES ('"+username+"','"+email+"','"+password+"');";
-      Statement st = (Statement) con.createStatement();
-      st.executeUpdate(query);
-      st.close();
-    } 
-    catch(Exception ex) {
-      System.out.println("Caught in registerUser");
-      ex.printStackTrace();
-    }
-  }
-  
-  /**
-   * registerUser(username, email, password) - Adds the user's information to the user-logins table in the db.
-   * @param username User's username.
-   * @param email User's email address.
-   * @param password User's password.
-   */
-  public void registerUser(String a, String b, String c, String d, 
-      String e, String f, String g, String h, String i) {
+  public void addData(String a, String b, Integer c, Integer d, 
+      Integer e, Integer f, Integer g, Integer h, Integer i) {
     Connection con = DBConnect();
     try {
       String query = "INSERT into user_data (bubble_name, creator, bubble_num_moments, widget_nbu_views,"
-          + " total_video_views, visits, views_per_visits, average_watch_time, percentage_mobile) "
-          + "VALUES ('"+a+"','"+b+"','"+c+"','"+d+
-          "','"+e+"','"+f+"','"+g+"','"+h+"','"+i+"');";
+          + " total_video_views, visits, views_per_visit, average_watch_time, percentage_mobile) "
+          + "VALUES ('"+a+"','"+b+"',"+c+","+d+
+          ","+e+","+f+","+g+","+h+","+i+");";
       Statement st = (Statement) con.createStatement();
       st.executeUpdate(query);
       st.close();
     } 
+    
+
+    /*
+    try {
+      String query="insert into user_data(bubble_name, creator, bubble_num_moments, widget_nbu_views,"
+          + " total_video_views, visits, views_per_visit, average_watch_time, percentage_mobile)"
+          + " values (?,?)";
+      PreparedStatement statement= con.prepareStatement(query);
+      statement.setString(1,a);
+      statement.setString(2,b);
+      statement.setInt(3,c);
+      statement.setInt(4,d);
+      statement.setInt(5,e);
+      statement.setInt(6,f);
+      statement.setInt(7,g);
+      statement.setInt(8,h);
+      statement.setInt(9,i);;
+      statement.executeUpdate();
+      statement.close();
+    }*/
     catch(Exception ex) {
-      System.out.println("Caught in registerUser");
+      System.out.println("Caught in addData");
       ex.printStackTrace();
     }
   }
@@ -105,4 +111,7 @@ public class LoginService {
       }
       return con;
   }
+  
+  
+
 }

@@ -4,13 +4,10 @@
 
 $(document).ready(function(){
   $("form").submit(function(event){
-    console.log("Prevented default submit.");
+    $("#return").text("").show();
     
-    //var frm = $("form");
-    //var data = JSON.stringify(frm.serializeArray());
     var data = $("form").serialize();
-    console.log(data);
-    
+
     var postData = $.ajax({
       method: "POST",
       url: "http://localhost:8080/TTG/login",
@@ -18,7 +15,7 @@ $(document).ready(function(){
     });
     
     postData.done(function(msg){
-      alert("finished ::"+msg);
+      $("#return").text(msg).show().fadeOut(2000);
     });
     
     event.preventDefault();
