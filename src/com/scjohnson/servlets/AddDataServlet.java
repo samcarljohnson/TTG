@@ -2,13 +2,11 @@ package com.scjohnson.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.apache.log4j.*;
 import com.scjohnson.services.AddDataService;
 import com.scjohnson.services.LoginService;
 
@@ -17,6 +15,7 @@ import com.scjohnson.services.LoginService;
  */
 public class AddDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger log;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,6 +36,12 @@ public class AddDataServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	  
+	  //PropertyConfigurator.configure("properties/log4j.properties");
+	  log = Logger.getLogger(AddDataServlet.class.getName());
+	  
+	  log.debug("Logger is working inside doPost!!!");
+	  log.log(Level.TRACE, "Logger is working inside doPost!!!");
 	  AddDataService data = new AddDataService();
     String a = request.getParameter("bubble_name");
     String b = request.getParameter("creator");
@@ -47,16 +52,6 @@ public class AddDataServlet extends HttpServlet {
     String g = request.getParameter("views_per_visit");
     String h = request.getParameter("average_watch_time");
     String i = request.getParameter("percentage_mobile");
-    
-    /*
-    Integer cc = Integer.parseInt(c);
-    Integer dd = Integer.parseInt(d);
-    Integer ee = Integer.parseInt(e);
-    Integer ff = Integer.parseInt(f);
-    Integer gg = Integer.parseInt(g);
-    Integer hh = Integer.parseInt(h);
-    Integer ii = Integer.parseInt(i);
-    */
     
     int cc = Integer.parseInt(c);
     int dd = Integer.parseInt(d);
