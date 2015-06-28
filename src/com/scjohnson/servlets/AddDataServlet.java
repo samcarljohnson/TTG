@@ -2,34 +2,32 @@ package com.scjohnson.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.*;
+
 import com.scjohnson.services.AddDataService;
 import com.scjohnson.services.LoginService;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class AddDataServlet
  */
 public class AddDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static Logger log;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     
-    public AddDataServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }*/
+	private static Logger log = Logger.getLogger(AddDataServlet.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+	   log.info("Logger is working inside doGet!!!");
+
 	}
 
 	/**
@@ -38,10 +36,9 @@ public class AddDataServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
 	  //PropertyConfigurator.configure("properties/log4j.properties");
-	  log = Logger.getLogger(AddDataServlet.class.getName());
 	  
-	  log.debug("Logger is working inside doPost!!!");
-	  log.log(Level.TRACE, "Logger is working inside doPost!!!");
+	  log.info("Logger is working inside doPost!!!");
+	  //log.log(Level.TRACE, "Logger is working inside doPost!!!");
 	  AddDataService data = new AddDataService();
     String a = request.getParameter("bubble_name");
     String b = request.getParameter("creator");
