@@ -34,11 +34,6 @@ public class AddDataServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	  
-	  //PropertyConfigurator.configure("properties/log4j.properties");
-	  
-	  log.info("Logger is working inside doPost!!!");
-	  //log.log(Level.TRACE, "Logger is working inside doPost!!!");
 	  AddDataService data = new AddDataService();
     String a = request.getParameter("bubble_name");
     String b = request.getParameter("creator");
@@ -50,20 +45,17 @@ public class AddDataServlet extends HttpServlet {
     String h = request.getParameter("average_watch_time");
     String i = request.getParameter("percentage_mobile");
     
-    int cc = Integer.parseInt(c);
-    int dd = Integer.parseInt(d);
-    int ee = Integer.parseInt(e);
-    int ff = Integer.parseInt(f);
-    int gg = Integer.parseInt(g);
-    int hh = Integer.parseInt(h);
-    int ii = Integer.parseInt(i);
-      
-    
+    String[] sArr = {c,d,e,f,g,h,i};
+    int[] iArr = new int[7];
+    for(int count=0; count < sArr.length; count++) {
+      iArr[count] = Integer.parseInt(sArr[count]);  
+    }
+
     PrintWriter out = response.getWriter();
     
     Boolean unique = data.uniqueStr(a);
     if(unique) { 
-      data.addData(a,b,cc,dd,ee,ff,gg,hh,ii);
+      data.addData(a,b,iArr[0],iArr[1],iArr[2],iArr[3],iArr[4],iArr[5],iArr[6]);
       out.write("Bubble \""+a+"\" was added to the database.");
     } else {
       out.write("Sorry, a bubble with that name already exists. Choose another name.");
