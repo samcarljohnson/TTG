@@ -10,16 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.jasper.tagplugins.jstl.core.Out;
+import org.apache.log4j.Logger;
 
 import com.scjohnson.services.LoginService;
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
+
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static Logger log = Logger.getLogger(LoginServlet.class);
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,8 +40,7 @@ public class LoginServlet extends HttpServlet {
 		String e = request.getParameter("email");;
 		String p = request.getParameter("password");;
 		login.registerUser(u, e, p);
-		//login.registerUser("Sam", "sam@burst.us", "pwd");
-    System.out.println("Added a user, I think...");
+    System.out.println("Added a user from the GET method");
 	}
 
 	/**
