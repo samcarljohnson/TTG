@@ -17,6 +17,11 @@ $(document).ready(function(){
     event.preventDefault();
   });
   
+  /**
+   *  This click listener is made for index.html
+   *  It looks at the id of the button clicked and send that to
+   *  the router servlet for processing. Made specifically for CategoryDAO.
+   */
   $('button').click(function(event){
     $.getJSON(
         "router", 
