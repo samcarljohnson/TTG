@@ -11,6 +11,7 @@ The easiest way to run this web application is to follow these steps:
 3. Right click on one of the .html files within WebContent, and select 'Run as'-->'Run on server'
 
 7-1-15
+
 Added a button to index.html - Tagged with and id that is used in the servlet
 Added a button click listener to postForm.js - Used in index.html to intercept the button click and do RESTful stuff.
 Added RouterServlet.java - Grabs the GET request from the client and makes the appropriate call to CategroyDAO.
