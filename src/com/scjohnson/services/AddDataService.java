@@ -87,6 +87,32 @@ public class AddDataService {
     }
   }
   
+  public boolean getReport() {
+    Connection con = DBConnect();
+    try {
+      //String query = "SELECT COUNT(*) FROM user_logins WHERE email='"+str+"';";
+      String query = "SELECT COUNT(*) FROM user_data WHERE bubble_name='sam';";
+      Statement st = (Statement) con.createStatement();
+      ResultSet rs = st.executeQuery(query);
+      
+      rs.next();
+      String result = rs.getString(1);
+      if(result.equals("0")) {
+        st.close();    
+        return true;
+      }
+      st.close();
+      return false;
+    } 
+    catch(Exception ex) {
+      System.out.println("Caught in uniqueUser");
+      ex.printStackTrace();
+    }
+    return true;
+  }
+  
+  
+  
   /**
    * DBConnect() - simply connect to the database.
    * @return Connection object to the database.

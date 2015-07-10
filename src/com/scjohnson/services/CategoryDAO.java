@@ -16,8 +16,8 @@ import com.scjohnson.objects.SugarAccount;
 public class CategoryDAO {
   private static Logger log = Logger.getLogger(CategoryDAO.class);
   
-  
-  public List<SugarAccount> getSP(String fn) throws Exception {
+  // getSP()
+  public List<SugarAccount> getSP(String fn) {
     ConnectService c_obj = new ConnectService();
     Connection con = c_obj.DBConnect("sugarcrm","postgres","sam123");
     List<SugarAccount> ret = new ArrayList<SugarAccount>();
@@ -50,5 +50,8 @@ public class CategoryDAO {
     log.info("Got the Result Set!!");
     return ret;
   }
+  
+  
+  
 
 }

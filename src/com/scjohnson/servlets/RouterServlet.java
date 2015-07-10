@@ -42,7 +42,7 @@ public class RouterServlet extends HttpServlet {
 		CategoryDAO cat = new CategoryDAO();
 		List<SugarAccount> result = new ArrayList<SugarAccount>();
 		if(!req.isEmpty()) {
-		  try{result = cat.getSP(req);}catch(Exception e){log.info("Exception caught in getSP() in CAtegoryDAO.java:: "+e);}
+		  result = cat.getSP(req);
 		}
 	  PrintWriter out = response.getWriter();
 	  response.setContentType("application/json");
