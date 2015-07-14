@@ -1,5 +1,5 @@
 # TTG
-TTG Web App
+TTG Web App (Being used to test analytics work at Burst)
 
 This web application was created and run in OSX v10.10.3, Eclipse Luna for Java EE v4.4.2, with my tomcat server setup properly. This is important to note because the way that eclipse runs tomcat7 is different than when simply running 'catalina start' from the command line, as the homebrew installation suggests. There is even a different webapps folder that these webapps are deployed from: tomcat7-->libexec-->wtwebapps
 
